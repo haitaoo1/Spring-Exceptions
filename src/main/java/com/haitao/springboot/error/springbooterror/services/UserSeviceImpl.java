@@ -5,6 +5,7 @@ import java.util.List;
 
 import org.springframework.stereotype.Service;
 
+import com.haitao.springboot.error.springbooterror.exceptions.UserNotFoundException;
 import com.haitao.springboot.error.springbooterror.models.domain.User;
 
 @Service
@@ -34,6 +35,11 @@ public class UserSeviceImpl implements UserServices {
                 user = us;
                 break;
             }
+        }
+        //capturamos la excepction
+        
+        if(user == null){
+            throw new UserNotFoundException("El usuario no existe");
         }
         return user;
     }

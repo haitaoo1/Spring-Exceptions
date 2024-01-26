@@ -5,6 +5,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+
+import com.haitao.springboot.error.springbooterror.exceptions.UserNotFoundException;
 import com.haitao.springboot.error.springbooterror.models.domain.User;
 import com.haitao.springboot.error.springbooterror.services.UserServices;
 
@@ -19,15 +21,18 @@ public class AppController {
 
     @GetMapping
     public String index(){
-        //int value = 100/0;
-        int value = Integer.parseInt("10x");
+        int value = 100/0;
+        //int value = Integer.parseInt("10x");
         System.out.println(value);
         return "ok 200";
     }
 
     @GetMapping("/show/{id}")
     public User show(@PathVariable(name = "id")Long id) {
-        return service.findById(id);
+        User user = service.findById(id);
+        
+        System.out.println(user.getLastname());
+        return user;
     }
     
 }

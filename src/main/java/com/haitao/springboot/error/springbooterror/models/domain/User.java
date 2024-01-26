@@ -35,8 +35,10 @@ public class User {
     public void setId(Long id) {
         this.id = id;
     }
-
-    public String getRol() {
+    public Rol getRol() {
+        return rol;
+    }
+    public String getRolName() {
         return rol.getName();
     }
 
